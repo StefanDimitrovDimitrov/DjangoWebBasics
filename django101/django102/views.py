@@ -1,8 +1,12 @@
 from django.contrib.auth.models import User
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import ListView
 
-from django101.models import Game
+from django102.models import Game
+
+def something(request):
+    return HttpResponse("<u>It works!</u>")
 
 
 def index(request):
