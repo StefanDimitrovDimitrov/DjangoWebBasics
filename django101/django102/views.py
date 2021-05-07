@@ -4,19 +4,23 @@ from django.shortcuts import render
 from django.views.decorators.http import require_GET
 from django.views.generic import ListView
 
-from django102.models import Game
-
+from django102.Models.game import Game
+from django102.Models.person import Person
+from django102.Models.player import Player
 
 def something(request):
     return HttpResponse("<u>It works!</u>")
 
 
+
 def index(request):
     title = 'SoftUni Django 101'
     user = User.objects.all()
+    games = Game.objects.all()
     context = {
         'title': title,
         'users': user,
+        'games': games,
     }
 
     return render(request, 'index.html', context)
