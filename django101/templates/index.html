@@ -24,9 +24,10 @@
 		<ul>
 		{% for game in games %}
 		<li class="highlightable">
-			{{game.name}}
-			{{game.level_of_dificulty}}
+			{{ game.name }}
+			{{ game.level_of_dificulty }}
 			{{ game.get_level_of_difficulty_display }}
+			{{ game.players_count }}
 		</li>
 		{% endfor %}
 	</ul>

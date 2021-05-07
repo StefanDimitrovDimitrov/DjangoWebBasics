@@ -2,8 +2,16 @@ from django.db import models
 
 from django102.Models.player import Player
 
+# update the default manager
+
+class GameManager(models.Manager):
+    def all_with_players_count(self):
+        return self.all()\
+            .annotate(players_count=models.Count('players'))
+
 
 class Game(models.Model):
+    objects = GameManager()
     EASY = 1
     MEDIUM = 2
     HARD = 3
@@ -15,10 +23,9 @@ class Game(models.Model):
     )
 
     name = models.CharField(max_length=30, blank=False, default='')
-    level_of_difficulty = models.CharField(
-        max_length=2,
+    level_of_difficulty = models.IntegerField(
         blank=False,
         choices=DIFFICULTY_LEVELS_CHOICES,
-        default=MEDIUM,
+        default=HARD,
     )
     players = models.ManyToManyField(Player)

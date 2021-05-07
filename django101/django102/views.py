@@ -1,12 +1,10 @@
 from django.contrib.auth.models import User
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.decorators.http import require_GET
 from django.views.generic import ListView
 
 from django102.Models.game import Game
-from django102.Models.person import Person
-from django102.Models.player import Player
 
 def something(request):
     return HttpResponse("<u>It works!</u>")
@@ -16,7 +14,7 @@ def something(request):
 def index(request):
     title = 'SoftUni Django 101'
     user = User.objects.all()
-    games = Game.objects.all()
+    games = Game.objects.all_with_players_count()
     context = {
         'title': title,
         'users': user,
@@ -55,3 +53,13 @@ def methods_demo(request):
         return JsonResponse(context)
 
     return render(request, 'methods_demo.html', context)
+
+# GRUD - create
+
+
+def create_game(request):
+    game = Game(
+        name='Test',
+        level_of_difficulty=Game.MEDIUM
+    )
+    game.save()
