@@ -3,11 +3,11 @@ function Collapse(event) {
     // event.target.style.display = 'none'
 }
 
-
-function initExpand() {
+window.onload= function(){
 
     const items = [...document.getElementsByClassName('collapse-toggle')];
     items.forEach(item => {
         item.addEventListener('click', Collapse)
-    })
-}
+    }
+
+)}
