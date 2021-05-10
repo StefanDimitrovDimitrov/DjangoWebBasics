@@ -9,6 +9,17 @@ ul, li, h1, h2, p {
     text-align: center;
 }
 
+form{
+    text-align: left;
+}
+
+.title{
+    text-align: left;
+    margin-left: 7%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
 .todo-list {
 
 }
@@ -30,7 +41,15 @@ ul, li, h1, h2, p {
     color: green;
 }
 
-form{
-    margin: 10em;
-    padding: 15%;
+
+
+.error  list li:before {
+    content: 'x';
+    margin-right: 5px;
+    padding-left: 5px;
+    color: red;
+}
+
+.btn-done{
+    text-align: center;
 }
